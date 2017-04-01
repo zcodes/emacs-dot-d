@@ -1,4 +1,3 @@
-#+TITLE: README
 #+STARTUP: indent
 
 * About
