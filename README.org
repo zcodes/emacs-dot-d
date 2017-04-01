@@ -1,0 +1,30 @@
+#+TITLE: README
+#+STARTUP: indent
+
+* About
+
+This is my new Emacs configure files. Until now, it only contains some
+basic configrations and some common used plugins, and it won't intent
+to be a full-stack configuration or a public published
+configuration. I use Emacs and Org-mode for my notes and todos, maybe
+it will be powerful in the future.
+
+The plugins managed by [[https://github.com/dimitri/el-get][El-Get]], and the plugins list below.
+
+** Plugins
+
+   + el-get
+   + ibuffer
+   + dired
+   + speedbar
+   + yasnippet
+   + ido
+   + powerline
+   + pangu-spacing
+   + org-mode
+
+
+
+
+
+
