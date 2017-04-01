@@ -1,0 +1,5 @@
+(:name emacs-material-theme
+       :description "Color Theme for emacs based on material design colors"
+       :type github
+       :pkgname "zcodes/emacs-material-theme"
+       :prepare (add-to-list 'custom-theme-load-path default-directory))

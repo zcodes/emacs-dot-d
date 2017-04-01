@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fends
+# key: fends
+# --
+;;; `(file-name-nondirectory (buffer-file-name))` ends here.
