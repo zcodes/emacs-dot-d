@@ -150,6 +150,10 @@
 (el-get-bundle 'yasnippet
   (yas-global-mode +1))
 
+;; window numbering
+(el-get-bundle 'window-numbering
+  (window-numbering-mode +1))
+
 (provide 'init-basic)
 
 ;;; init-basic.el ends here.
