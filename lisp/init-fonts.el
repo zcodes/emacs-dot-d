@@ -18,7 +18,9 @@
 				 :weight 'bold
 				 :style 'normal
 				 :size 12.0))))
-(zcodes:set-gui-font)
+(if window-system 
+  (zcodes:set-gui-font)
+  )
 
 (provide 'init-fonts)
 

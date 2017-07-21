@@ -10,17 +10,18 @@
 ;;
 ;;; Code:
 
+(setq package-archives
+      '(("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-
+(setq el-get-git-install-url "https://github.com/zcodes/el-get.git")
 (unless (require 'el-get nil 'noerror)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/"))
-  (package-refresh-contents)
-  (package-initialize)
-  (package-install 'el-get)
-  (require 'el-get))
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/zcodes/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 (setq el-get-user-package-directory "~/.emacs.d/packages.d")
@@ -29,8 +30,8 @@
   (setq package-check-signature nil))
 
 (add-hook 'after-init-hook
-	  (lambda ()
-	    (el-get 'sync)))
+          (lambda ()
+            (el-get 'sync)))
 
 (provide 'init-el-get)
 
