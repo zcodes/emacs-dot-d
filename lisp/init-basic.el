@@ -1,3 +1,4 @@
+
 ;;; lisp/init-basic.el --- Emacs basic settings and common used plugins.
 ;;
 ;; Copyright (c) 2017 zcodes <zcodes@qq.com>

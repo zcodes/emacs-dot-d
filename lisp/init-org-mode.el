@@ -47,7 +47,6 @@
 		       "* %? :NOTE:\n%U\n" :clock-resume t)
 		      ("j" "journal" entry (file+datetree ,(zcodes:org-file-path "/journal.org"))
 		       "* %?\nEntered on %<[%H:%M:%S]>\n %i\n" :clock-resume t)))))
-
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d)" "CANCELED(c)")))
 
