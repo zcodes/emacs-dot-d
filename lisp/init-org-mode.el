@@ -41,11 +41,15 @@
 	      (setq org-capture-templates
 		    `(("t" "todo" entry (file ,(zcodes:org-file-path "/todo.org"))
 		       "* TODO %?\n%U\n" :clock-resume t)
+		      ("w" "work" entry (file ,(zcodes:org-file-path "/work.org"))
+		       "* TODO %?\n%U\n" :clock-resume t)
 		      ("n" "note" entry (file "")
 		       "* %? :NOTE:\n%U\n" :clock-resume t)
 		      ("j" "journal" entry (file+datetree ,(zcodes:org-file-path "/journal.org"))
 		       "* %?\nEntered on %<[%H:%M:%S]>\n %i\n" :clock-resume t)))))
 
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)" "CANCELED(c)")))
 
 (provide 'init-org-mode)
 
