@@ -1,14 +1,10 @@
 # -*- mode: snippet -*-
-# name: header
-# key: header
+# name: html_attrib
+# key: html_attrib
 # --
-#+TITLE: ${1:title}
-#+STARTUP: indent overview
 #+LANGUAGE: zh-Hans
 #+HTML_DOCTYPE: html5
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/assets/css/normalize.css">
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 #+OPTIONS: html-style:t ^:{} -:nil
 #+HTML_MATHJAX: path: /assets/MathJax/MathJax.js
-
-$0

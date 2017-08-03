@@ -43,6 +43,8 @@
 (require 'init-org-mode)
 (require 'init-basic)
 
+;; languages
+(require 'init-php)
 
 
 ;;; init.el ends here.
