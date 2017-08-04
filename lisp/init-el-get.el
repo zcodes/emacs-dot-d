@@ -10,12 +10,12 @@
 ;;
 ;;; Code:
 
-(setq package-archives
-      '(("gnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-        ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+;; custom el-get paths
+(setq el-get-dir "~/.emacs.d/packages/"
+      el-get-install-dir "~/.emacs.d/packages/el-get/"
+      el-get-git-install-url "https://github.com/zcodes/el-get.git")
 
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(setq el-get-git-install-url "https://github.com/zcodes/el-get.git")
+(add-to-list 'load-path el-get-install-dir)
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
@@ -23,16 +23,13 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
-(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
-(setq el-get-user-package-directory "~/.emacs.d/packages.d")
+;; custom el-get recipes
+(add-to-list 'el-get-recipe-path "~/.emacs.d/recipes/")
 
-(when (string-equal system-type "windows-nt")
-  (setq package-check-signature nil))
-
+;; sync el-get
 (add-hook 'after-init-hook
           (lambda ()
             (el-get 'sync)))
 
 (provide 'init-el-get)
-
 ;;; init-el-get.el ends here.

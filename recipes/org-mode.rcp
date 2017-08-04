@@ -1,0 +1,16 @@
+(:name org-mode
+       :website "http://orgmode.org/"
+       :description "use a mirrored org-mode git repo for speed up the installtion."
+       :type git
+       :url "https://github.com/zcodes/org-mode.git"
+       :info "doc"
+       :build/berkeley-unix `,(mapcar
+                               (lambda (target)
+                                 (list "gmake" target (concat "EMACS=" (shell-quote-argument el-get-emacs))))
+                               '("oldorg"))
+       :build `,(mapcar
+                 (lambda (target)
+                   (list "make" target (concat "EMACS=" (shell-quote-argument el-get-emacs))))
+                 '("oldorg"))
+       :load-path ("." "contrib/lisp" "lisp")
+       :load ("lisp/org-loaddefs.el"))

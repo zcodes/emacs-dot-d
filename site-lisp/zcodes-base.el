@@ -16,6 +16,5 @@
   (interactive)
   (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
 
-
 (provide 'zcodes-base)
 ;;; zcodes-base.el ends here.

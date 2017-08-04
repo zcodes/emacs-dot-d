@@ -11,17 +11,17 @@
 ;;; Code:
 
 (defun zcodes:set-gui-font ()
-  (set-frame-font "Inziu Iosevka SC Bold Italic 12")
-  (dolist (charset '(latin han symbol cjk-misc unicode))
-    (set-fontset-font t charset (font-spec
-				 :family "Inziu Iosevka SC"
-				 :weight 'bold
-				 :style 'normal
-				 :size 12.0))))
-(if window-system 
-  (zcodes:set-gui-font)
-  )
+  "custom emacs gui font."
+  (when window-system
+    (set-frame-font "Inziu Iosevka SC Bold Italic 12")
+    (dolist (charset '(latin han symbol cjk-misc unicode))
+      (set-fontset-font t charset (font-spec
+				   :family "Inziu Iosevka SC"
+				   :weight 'bold
+				   :style 'normal
+				   :size 12.0)))))
+
+(zcodes:set-gui-font)
 
 (provide 'init-fonts)
-
 ;;; init-fonts.el ends here.

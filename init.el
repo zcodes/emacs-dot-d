@@ -10,23 +10,25 @@
 ;;
 ;;; Code:
 
-(setq gc-cons-threshold 104857600
-      package-enable-at-startup nil)
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
+;; (package-initialize)
 
-(package-initialize)			
+(setq gc-cons-threshold 104857600
+      package-enable-at-startup nil)
 
 (defun zcodes:init-load-paths ()
-  (let ((paths '("~/.emacs.d/el-get/el-get"
-		 "~/.emacs.d/lisp")))
+  "add custom path to `load-path'"
+  (let ((paths '("~/.emacs.d/packages/el-get/"
+		 "~/.emacs.d/lisp/"
+		 "~/.emacs.d/site-lisp/")))
     (dolist (path paths)
       (add-to-list 'load-path path))))
 
 (defun zcodes:init-custom-file ()
+  "load custom configure file after emacs initialized."
   (setq custom-file "~/.emacs.d/custom.el")
   (add-hook 'after-init-hook
 	    (lambda ()
@@ -36,6 +38,7 @@
 (zcodes:init-load-paths)
 (zcodes:init-custom-file)
 
+;; common
 (require 'init-el-get)
 (require 'init-gui)
 (require 'init-fonts)
@@ -45,6 +48,5 @@
 
 ;; languages
 (require 'init-php)
-
 
 ;;; init.el ends here.

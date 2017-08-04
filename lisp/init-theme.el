@@ -10,11 +10,7 @@
 ;;
 ;;; Code:
 
-
 (el-get-bundle emacs-material-theme
-  :type github
-  :pkgname "zcodes/emacs-material-theme"
-  (add-to-list 'custom-theme-load-path default-directory)
   (load-theme 'material t))
 
 (provide 'init-theme)

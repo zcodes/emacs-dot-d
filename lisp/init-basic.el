@@ -52,7 +52,6 @@
 	  (lambda ()
 	    (font-lock-add-keywords nil '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTES\\):?" 1 font-lock-warning-face t)))))
 
-
 ;; NOTES the spell for `separtor' is should be `separator', error in
 ;; `pangu-spacing.el'
 (el-get-bundle 'pangu-spacing
@@ -155,6 +154,6 @@
 (el-get-bundle 'window-numbering
   (window-numbering-mode +1))
 
-(provide 'init-basic)
 
+(provide 'init-basic)
 ;;; init-basic.el ends here.
