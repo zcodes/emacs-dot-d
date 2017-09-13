@@ -10,9 +10,10 @@
 ;;
 ;;; Code:
 
+;; TODO 移植一下vim的spacegray主题
 (el-get-bundle emacs-material-theme
   (load-theme 'material t))
 
-(provide 'init-theme)
 
+(provide 'init-theme)
 ;;; init-theme.el ends here.
