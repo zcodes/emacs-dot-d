@@ -24,8 +24,9 @@
 
 (defun zcodes:set-org-table-font ()
   "针对org表格中文导致无法对齐表格，单独设置中文字体"
-  (set-face-attribute 'org-table nil
-		      :font "Inziu Iosevka SC 12"))
+  (when window-system
+    (set-face-attribute 'org-table nil
+			:font "Inziu Iosevka SC 12")))
 
 (zcodes:set-gui-font)
 (add-hook 'org-mode-hook 'zcodes:set-org-table-font)

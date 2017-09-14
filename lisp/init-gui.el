@@ -29,6 +29,7 @@
   (add-to-list 'default-frame-alist '(width . 120))
   (add-to-list 'default-frame-alist '(height . 30)))
 
+(el-get-bundle 'rainbow-mode)
 
 (provide 'init-gui)
 ;;; init-gui.el ends here.
