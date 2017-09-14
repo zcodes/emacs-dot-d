@@ -36,6 +36,7 @@
 
 ;; common
 (require 'init-el-get)
+(require 'init-evil)
 (require 'init-gui)
 (require 'init-fonts)
 (require 'init-theme)
@@ -44,5 +45,8 @@
 
 ;; languages
 (require 'init-php)
+(require 'init-elisp)
 
+;;
+;;
 ;;; init.el ends here.
