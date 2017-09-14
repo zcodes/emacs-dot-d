@@ -19,7 +19,6 @@
 (define-key evil-normal-state-map (kbd "C-z") 'suspend-frame)
 (define-key evil-insert-state-map (kbd "C-z") 'suspend-frame)
 
-(evil-define-key 'normal minibuffer-inactive-mode-map "Esc" 'keyboard-quit)
 (evil-mode 1)
 (global-evil-leader-mode)
 
@@ -29,8 +28,12 @@
   "b d" 'dird
   "f" 'ido-find-file)
 
-(evil-leader/set-key-for-mode 'emacs-lisp-mode
-  "e" 'eval-last-sexp)
+(dolist (mode '(emacs-lisp-mode lisp-interaction-mode))
+  (evil-leader/set-key-for-mode mode
+    "e e" 'eval-last-sexp
+    "e b" 'eval-buffer))
+
+(setq evil-highlight-closing-paren-at-point-states nil)
 
 (provide 'init-evil)
 ;;; init-evil.el ends here.

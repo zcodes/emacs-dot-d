@@ -12,7 +12,7 @@
 
 (add-hook 'emacs-lisp-mode-hook
 	  (lambda ()
-	    (show-paren-mode nil)
+	    (show-paren-mode -1)
 	    (rainbow-delimiters-mode)))
 
 (provide 'init-elisp)

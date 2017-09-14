@@ -10,19 +10,23 @@
 ;;
 ;;; Code:
 
+;; disable this sucking feature first
+(setq blink-matching-paren nil)
+
 ;; prefer utf-8 encoding and unix line ending.
 (prefer-coding-system 'utf-8-unix)
 
 ;; line numbers.
 (el-get-bundle 'nlinum
   (global-nlinum-mode t))
+(setq nlinum-format "%d ")
 
 ;; highlight current line.
 (when window-system
   (global-hl-line-mode t))
 
 ;; parenthesis
-(show-paren-mode 1)
+(show-paren-mode -1)
 (electric-pair-mode 1)
 
 ;; no blink cursor.
@@ -68,7 +72,9 @@
 	ido-use-faces nil)
   (ido-mode 1)
   (ido-everywhere 1)
-  (flx-ido-mode 1))
+  (flx-ido-mode 1)
+  (define-key ido-common-completion-map (kbd "<escape>") 'abort-recursive-edit)
+  (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit))
 
 ;; powerline.
 (el-get-bundle 'powerline
