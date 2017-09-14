@@ -1,4 +1,3 @@
-
 ;;; lisp/init-basic.el --- Emacs basic settings and common used plugins.
 ;;
 ;; Copyright (c) 2017 zcodes <zcodes@qq.com>
@@ -87,6 +86,11 @@
      (t (format "%8d" (buffer-size))))))
 
 (with-eval-after-load 'ibuffer
+  (define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
+  (define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line)
+  (define-key ibuffer-mode-map (kbd "C-j") 'ibuffer-jump-to-buffer))
+
+(with-eval-after-load 'ibuffer
   (require 'ibuffer-vc))
 
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -137,6 +141,9 @@
       speedbar-show-unknown-files t
       speedbar-update-flags nil)
 
+(global-set-key (kbd "<f3>") 'sr-speedbar-open)
+(global-set-key (kbd "<f4>") 'sr-speedbar-close)
+
 ;; company-mode
 (el-get-bundle 'company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
@@ -154,6 +161,10 @@
 (el-get-bundle 'window-numbering
   (window-numbering-mode +1))
 
+;; helpful colors
+(el-get-bundle 'rainbow-mode
+  (rainbow-mode))
+(el-get-bundle 'rainbow-delimiters)
 
 (provide 'init-basic)
 ;;; init-basic.el ends here.
