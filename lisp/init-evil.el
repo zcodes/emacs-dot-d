@@ -31,9 +31,8 @@
 (dolist (mode '(emacs-lisp-mode lisp-interaction-mode))
   (evil-leader/set-key-for-mode mode
     "e e" 'eval-last-sexp
-    "e b" 'eval-buffer))
-
-(setq evil-highlight-closing-paren-at-point-states nil)
+    "e b" 'eval-buffer
+    "g" 'xref-find-definitions))
 
 (provide 'init-evil)
 ;;; init-evil.el ends here.

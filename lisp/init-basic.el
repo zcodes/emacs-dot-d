@@ -53,7 +53,9 @@
 ;; keyword for TODO FIXME BUG NOTES
 (add-hook 'prog-mode-hook
 	  (lambda ()
-	    (font-lock-add-keywords nil '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTES\\):?" 1 font-lock-warning-face t)))))
+	    (font-lock-add-keywords
+	     nil
+	     '(("\\<\\(FIXME\\|TODO\\|BUG\\|NOTES\\):?" 1 font-lock-warning-face t)))))
 
 ;; NOTES the spell for `separtor' is should be `separator', error in
 ;; `pangu-spacing.el'

@@ -18,6 +18,11 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode 0))
 
+;; diable menu bar in msys2 or console
+(unless window-system
+  (when (fboundp 'menu-bar-mode)
+    (menu-bar-mode 0)))
+
 (setq use-file-dialog nil)
 (setq use-dialog-box nil)
 (setq inhibit-startup-message t)
