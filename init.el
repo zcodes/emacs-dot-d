@@ -15,24 +15,21 @@
 (setq gc-cons-threshold 104857600
       package-enable-at-startup nil)
 
-(defun zcodes:init-load-paths ()
-  "add custom path to `load-path'"
-  (let ((paths '("~/.emacs.d/packages/el-get/"
-		 "~/.emacs.d/lisp/"
-		 "~/.emacs.d/site-lisp/")))
-    (dolist (path paths)
-      (add-to-list 'load-path path))))
+;; setup load paths
+(let ((paths '("~/.emacs.d/packages/el-get/"
+	       "~/.emacs.d/lisp/"
+	       "~/.emacs.d/site-lisp/")))
+  (dolist (path paths)
+    (add-to-list 'load-path path)))
 
-(defun zcodes:init-custom-file ()
-  "load custom configure file after emacs initialized."
-  (setq custom-file "~/.emacs.d/custom.el")
-  (add-hook 'after-init-hook
-	    (lambda ()
-	      (when (file-exists-p custom-file)
-		(load custom-file)))))
-
-(zcodes:init-load-paths)
-(zcodes:init-custom-file)
+;; setup custom-files
+(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file-before "~/.emacs.d/custom.before.el")
+(load custom-file-before)
+(add-hook 'after-init-hook
+	  (lambda ()
+	    (when (file-exists-p custom-file)
+	      (load custom-file))))
 
 ;; common
 (require 'init-el-get)
@@ -46,6 +43,7 @@
 ;; languages
 (require 'init-php)
 (require 'init-elisp)
+(require 'init-lisp)
 
 ;;
 ;;

@@ -20,17 +20,19 @@
 				   :family "Inziu Iosevka SC"
 				   :weight 'normal
 				   :style 'normal
-				   :size 13.0)))))
+				   :size 13.5)))))
 
-(defun zcodes:set-org-table-font ()
-  "针对org表格中文导致无法对齐表格，单独设置中文字体"
-  (when window-system
-    (set-face-attribute 'org-table nil
-			:font "Inziu Iosevka SC 12")))
+;; NOTE: 使用 consolas 13 + Microsoft Yahei 13.5
+;;
+;; (defun zcodes:set-org-table-font ()
+;;   "针对org表格中文导致无法对齐表格，单独设置中文字体"
+;;   (when window-system
+;;     (set-face-attribute 'org-table nil
+;; 			:font "Inziu Iosevka SC 12")))
+;;(add-hook 'org-mode-hook 'zcodes:set-org-table-font)
+
 
 (zcodes:set-gui-font)
-(add-hook 'org-mode-hook 'zcodes:set-org-table-font)
-
 
 (provide 'init-fonts)
 ;;; init-fonts.el ends here.
