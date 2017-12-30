@@ -25,7 +25,8 @@
 ;; setup custom-files
 (setq custom-file "~/.emacs.d/custom.el")
 (setq custom-file-before "~/.emacs.d/custom.before.el")
-(load custom-file-before)
+(if (file-exists-p custom-file-before)
+    (load custom-file-before))
 (add-hook 'after-init-hook
 	  (lambda ()
 	    (when (file-exists-p custom-file)
