@@ -26,7 +26,12 @@
   (electric-pair-mode 1))
 
 (dolist (hook '(emacs-lisp-mode-hook lisp-mode-hook))
-  (zcodes:enable-electric-pair-mode-locally))
+  (add-hook hook 'zcodes:enable-electric-pair-mode-locally))
+
+(add-hook 'slime-repl-mode-hook
+	  (lambda ()
+	    (electric-pair-local-mode 0)))
+
 
 (provide 'init-lisp)
 ;;; init-lisp.el ends here.
