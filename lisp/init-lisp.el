@@ -22,5 +22,11 @@
 ;; (setq slime-lisp-implementations
 ;;      '((sbcl ("sbcl" "--core" "sbcl.core-for-slime"))))
 
+(defun zcodes:enable-electric-pair-mode-locally ()
+  (electric-pair-mode 1))
+
+(dolist (hook '(emacs-lisp-mode-hook lisp-mode-hook))
+  (zcodes:enable-electric-pair-mode-locally))
+
 (provide 'init-lisp)
 ;;; init-lisp.el ends here.
