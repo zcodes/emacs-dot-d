@@ -4,6 +4,7 @@
 /elpa
 /url
 /custom.el
+/custom.before.el
 /ido.last
 /bookmarks
 /.org-id-locations
