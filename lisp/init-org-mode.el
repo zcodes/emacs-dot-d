@@ -32,7 +32,9 @@
 
 (defun zcodes:org-file-path (file)
   "concat FILE with `org-directory'"
-  (concat org-directory file))
+  (if (boundp 'org-directory)
+      (concat org-directory file)
+    (concat (expand-file-name "~") file)))
 
 (with-eval-after-load "custom.el"
   (progn

@@ -27,7 +27,7 @@
 
 ;; parenthesis
 (show-paren-mode -1)
-;; (electric-pair-mode 1)
+(electric-pair-mode 1)
 
 ;; no blink cursor.
 (blink-cursor-mode 0)

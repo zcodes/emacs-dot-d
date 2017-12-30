@@ -22,15 +22,19 @@
 ;; (setq slime-lisp-implementations
 ;;      '((sbcl ("sbcl" "--core" "sbcl.core-for-slime"))))
 
-(defun zcodes:enable-electric-pair-mode-locally ()
-  (electric-pair-mode 1))
+;; (if (fboundp 'electric-pair-local-mode)
+;;     (defalias 'zcodes:electric-pair-local-mode 'electric-pair-local-mode)
+;;   (defalias 'zcodes:electric-pair-local-mode 'electric-pair-mode))
 
-(dolist (hook '(emacs-lisp-mode-hook lisp-mode-hook))
-  (add-hook hook 'zcodes:enable-electric-pair-mode-locally))
+;; (defun zcodes:enable-electric-pair-mode-locally ()
+;;   (zcodes:electric-pair-local-mode 1))
 
-(add-hook 'slime-repl-mode-hook
-	  (lambda ()
-	    (electric-pair-local-mode 0)))
+;; (dolist (hook '(emacs-lisp-mode-hook lisp-mode-hook))
+;;   (add-hook hook 'zcodes:enable-electric-pair-mode-locally))
+
+;; (add-hook 'slime-repl-mode-hook
+;; 	  (lambda ()
+;; 	    (zcodes:electric-pair-local-mode 0)))
 
 
 (provide 'init-lisp)
