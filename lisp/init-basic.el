@@ -32,8 +32,8 @@
 ;; no blink cursor.
 (blink-cursor-mode 0)
 
+(setq-default indent-tabs-mode nil)
 (setq show-paren-style "parenthesis"
-      indent-tabs-mode 0
       mouse-wheel-scroll-amount '(2 ((shift) . 2))
       mouse-wheel-progressive-speed nil
       mouse-wheel-follow-mouse 1
