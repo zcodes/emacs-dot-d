@@ -29,7 +29,8 @@
 ;; sync el-get
 (add-hook 'after-init-hook
           (lambda ()
-            (el-get 'sync)))
+            (el-get 'sync)
+            (package-initialize)))
 
 (provide 'init-el-get)
 ;;; init-el-get.el ends here.

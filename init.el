@@ -24,13 +24,10 @@
 
 ;; setup custom-files
 (setq custom-file "~/.emacs.d/custom.el")
-(setq custom-file-before "~/.emacs.d/custom.before.el")
-(if (file-exists-p custom-file-before)
-    (load custom-file-before))
 (add-hook 'after-init-hook
-	  (lambda ()
-	    (when (file-exists-p custom-file)
-	      (load custom-file))))
+          (lambda ()
+            (when (file-exists-p custom-file)
+              (load custom-file))))
 
 ;; common
 (require 'init-el-get)
