@@ -12,10 +12,10 @@
 
 
 (el-get-bundle 'org-mode)
-(el-get-bundle 'org-bullets
-  (setq org-bullets-bullet-list
-  	'("※" "○" "⬡" "⬠" "□" "▷" "⊛" "⊕" "⊖"))
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+; (el-get-bundle 'org-bullets
+;   (setq org-bullets-bullet-list
+;   	'("※" "○" "⬡" "⬠" "□" "▷" "⊛" "⊕" "⊖"))
+;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq org-log-done t
       org-hide-emphasis-markers t

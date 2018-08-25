@@ -13,7 +13,9 @@
 ;; custom el-get paths
 (setq el-get-dir "~/.emacs.d/packages/"
       el-get-install-dir "~/.emacs.d/packages/el-get/"
-      el-get-git-install-url "https://github.com/zcodes/el-get.git")
+      el-get-git-install-url "https://github.com/zcodes/el-get.git"
+      el-get-install-shallow-clone t
+      el-get-git-shallow-clone t)
 
 (add-to-list 'load-path el-get-install-dir)
 (unless (require 'el-get nil 'noerror)
@@ -26,6 +28,8 @@
 ;; custom el-get recipes
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes/")
 
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 ;; sync el-get
 (add-hook 'after-init-hook
           (lambda ()
