@@ -9,30 +9,28 @@
 ;; This file is NOT part of GNU Emacs.
 ;;
 ;;; Code:
-
-(defun zcodes:set-gui-font ()
-  "设置Emacs的字体"
-  (interactive)
-  (when window-system
-    (set-frame-font "Consolas 13")
-    (dolist (charset '(latin han symbol cjk-misc unicode))
-      (set-fontset-font t charset (font-spec
-				   :family "Inziu Iosevka SC"
-				   :weight 'normal
-				   :style 'normal
-				   :size 13.5)))))
-
-;; NOTE: 使用 consolas 13 + Microsoft Yahei 13.5
 ;;
-;; (defun zcodes:set-org-table-font ()
-;;   "针对org表格中文导致无法对齐表格，单独设置中文字体"
-;;   (when window-system
-;;     (set-face-attribute 'org-table nil
-;; 			:font "Inziu Iosevka SC 12")))
-;;(add-hook 'org-mode-hook 'zcodes:set-org-table-font)
-
-
-(zcodes:set-gui-font)
+;; 字体设置
+;;
+;; Code New Roman 字体: https://sourceforge.net/projects/codenewroman/
+;; 方正字体: http://www.foundertype.com/index.php/FontInfo/index/id/244.html
+;;
+;; 英文字体设置
+;; :antialias 是Emacs MS-Windows下独有的配置
+;; (set-frame-font "Code New Roman-14:antialias=standard")
+;; or
+;; (set-frame-font (font-spec :family "Code New Roman" :size 14.0 :antialias 'natural))
+;;
+;; 中文字体设置
+;; (dolist (charset '(han cjk-misc))
+;;   (set-fontset-font t charset
+;;                      (font-spec
+;;                       :family "方正悠黑简体 509R"
+;;                       :size 15.0
+;;                       :weight 'normal) nil 'prepend))
+;;
+;; Note: not change default font here.
+;;       code here just for example.
 
 (provide 'init-fonts)
 ;;; init-fonts.el ends here.

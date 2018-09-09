@@ -15,11 +15,14 @@
 
 ;; prefer utf-8 encoding and unix line ending.
 (prefer-coding-system 'utf-8-unix)
+;; (setq w32-use-visible-system-caret t)
 
 ;; line numbers.
 (el-get-bundle 'nlinum
   (global-nlinum-mode t))
 (setq nlinum-format "%d ")
+
+(global-visual-line-mode t)
 
 ;; highlight current line.
 (when window-system

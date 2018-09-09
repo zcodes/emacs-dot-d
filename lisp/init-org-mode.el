@@ -10,21 +10,23 @@
 ;;
 ;;; Code:
 
-
 (el-get-bundle 'org-mode)
-(el-get-bundle 'org-bullets
-  (setq org-bullets-bullet-list
-  	'("※" "○" "⬡" "⬠" "□" "▷" "⊛" "⊕" "⊖"))
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+(el-get-bundle 'htmlize)
+
+;; disable org-bullets, it's hard to display unicode characters in
+;; common fonts.
+;; (el-get-bundle 'org-bullets
+;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq org-log-done t
-      org-hide-emphasis-markers t
+      org-hide-emphasis-markers nil
       org-catch-invisible-edits 'show
       org-export-coding-system 'utf-8
       org-html-validation-link nil
       org-tags-column 80
       org-html-doctype "html5")
 
+;; 设置全局快捷键
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cc" 'org-capture)
@@ -37,21 +39,30 @@
     (concat (expand-file-name "~") file)))
 
 (with-eval-after-load "custom.el"
-  (progn
-    (setq org-default-notes-file
-	  (zcodes:org-file-path "/notes.org"))
-    (setq org-capture-templates
-	  `(("t" "todo" entry (file ,(zcodes:org-file-path "/todo.org"))
-	     "* TODO %?\n%U\n" :clock-resume t)
-	    ("w" "work" entry (file ,(zcodes:org-file-path "/work.org"))
-	     "* TODO %?\n%U\n" :clock-resume t)
-	    ("n" "note" entry (file "")
-	     "* %? :NOTE:\n%U\n" :clock-resume t)
-	    ("j" "journal" entry (file+datetree ,(zcodes:org-file-path "/journal.org"))
-	     "* %?\nEntered on %<[%H:%M:%S]>\n %i\n" :clock-resume t)))))
+  (setq org-default-notes-file (zcodes:org-file-path "/notes.org")
+        org-capture-templates `(("t" "todo" entry (file ,(zcodes:org-file-path "todo.org"))
+                                 "* TODO %?\n%U\n" :clock-resume t)
+                                ("n" "note" entry (file "") "* %? :NOTE:\n%U\n" :clock-resume t)
+                                ("j" "journal" entry (file+olp+datetree ,(zcodes:org-file-path "/journal.org"))
+                                 "* %?\nEntered on %<[%H:%M:%S]>\n %i\n" :clock-resume t))))
+
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d)" "CANCELED(c)")))
 
-(provide 'init-org-mode)
+(defun my-html-filter-add-notes-class (text backend info)
+  "Add .org-note class to exported log note."
+  (when (org-export-derived-backend-p backend 'html)
+    (replace-regexp-in-string
+     "\<li\>\\(Note taken on.*\</span\>\</span\>\\) \<br\>\\(.*\\)"
+     "\<li class=\"org-note\"\>\<span class=\"org-note-label\"\>\\1\</span\>" text)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (add-to-list 'org-export-filter-plain-list-functions 'my-html-filter-add-notes-class)))
 
+;; keybinding for org-mode
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key (kbd "<f12>") 'org-publish-current-file)))
+
+(provide 'init-org-mode)
 ;;; init-org-mode.el ends here.

@@ -32,11 +32,11 @@
   (add-hook 'parinfer-mode-hook
             (lambda ()
               (setq parinfer-extensions
-                    '(defaults
-                       pretty-parens
-                       smart-yank
+                    '( ;;defaults
+                       ;; pretty-parens
+                       ;; smart-yank
                        ;; smart-tab
-                       paredit
+                       ;; paredit
                        ;; lispy
                        evil))))
   (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
