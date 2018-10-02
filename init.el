@@ -41,6 +41,7 @@
 (require 'init-theme)
 (require 'init-org-mode)
 (require 'init-basic)
+(require 'init-helm)
 
 ;; languages
 (require 'init-php)
