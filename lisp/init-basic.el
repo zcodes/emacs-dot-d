@@ -66,20 +66,23 @@
   (global-pangu-spacing-mode 1)
   (dolist (mode '(org-mode-hook markdown-mode-hook))
     (add-hook mode
-	      '(lambda ()
-		 (set (make-local-variable
-		       'pangu-spacing-real-insert-separtor) t)))))
+              '(lambda ()
+                 (set (make-local-variable
+                       'pangu-spacing-real-insert-separtor) t)))))
 
 ;; ido and flx (fuzzy matching).
 (el-get-bundle 'flx
   (require 'flx-ido)
   (setq ido-enable-flex-matching 1
-	ido-use-faces nil)
+        ido-use-faces nil)
   (ido-mode 1)
   (ido-everywhere 1)
   (flx-ido-mode 1)
   (define-key ido-common-completion-map (kbd "<escape>") 'abort-recursive-edit)
   (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit))
+;; smex
+(el-get-bundle smex)
+(global-set-key (kbd "M-x") 'smex)
 
 ;; powerline.
 (el-get-bundle 'powerline
@@ -152,8 +155,18 @@
       speedbar-show-unknown-files t
       speedbar-update-flags nil)
 
+(el-get-bundle 'emacs-neotree)
+(setq neo-theme 'ascii)
+(evil-define-key 'normal neotree-mode-map (kbd "RET")
+  (neotree-make-executor :file-fn 'neo-open-file :dir-fn 'neo-open-dir))
+(evil-define-key 'normal neotree-mode-map "u" 'neotree-select-up-node)
+(evil-define-key 'normal neotree-mode-map "i" 'neotree-hidden-file-toggle)
+(evil-define-key 'normal neotree-mode-map "c" 'neotree-change-root)
+(evil-define-key 'normal neotree-mode-map "r" 'neotree-refresh)
+
 (global-set-key (kbd "<f3>") 'sr-speedbar-open)
 (global-set-key (kbd "<f4>") 'sr-speedbar-close)
+(global-set-key (kbd "<f8>") 'neotree-toggle)
 
 ;; company-mode
 (el-get-bundle 'company-mode)
