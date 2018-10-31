@@ -22,10 +22,11 @@
 (require 'helm-config)
 ;; (global-set-key (kbd "M-x") 'helm-M-x)
 
-(evil-leader/set-key
-  "h x" 'helm-M-x
-  "h b" 'helm-filtered-bookmarks
-  "h f" 'helm-find-files)
+(if (fboundp 'evil-leader/set-key)
+    (evil-leader/set-key
+      "h x" 'helm-M-x
+      "h b" 'helm-filtered-bookmarks
+      "h f" 'helm-find-files))
 (helm-mode 1)
 
 (provide 'init-helm)

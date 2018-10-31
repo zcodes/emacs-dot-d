@@ -1,6 +1,6 @@
 ;;; lisp/init-org-mode.el --- Emacs org-mode.
 ;;
-;; Copyright (c) 2017 zcodes <zcodes@qq.com>
+;; Copyright (c) 2017-2018 zcodes <zcodes@qq.com>
 ;;
 ;; Author: zcodes <zcodes@qq.com>
 ;; URL: https://github.com/zcodes/emacs-dot-d
@@ -53,8 +53,8 @@
   "Add .org-note class to exported log note."
   (when (org-export-derived-backend-p backend 'html)
     (replace-regexp-in-string
-     "\<li\>\\(Note taken on.*\</span\>\</span\>\\) \<br\>\\(.*\\)"
-     "\<li class=\"org-note\"\>\<span class=\"org-note-label\"\>\\1\</span\>" text)))
+     "\<li\>\\(\<p\>\n\\)?\\(Note taken on.*\</span\>\</span\>\\) \<br\>\\(.*\\)"
+     "\<li class=\"org-note\"\>\\1\<span class=\"org-note-label\"\>\\2\</span\>" text)))
 (add-hook 'org-mode-hook
           (lambda ()
             (add-to-list 'org-export-filter-plain-list-functions 'my-html-filter-add-notes-class)))

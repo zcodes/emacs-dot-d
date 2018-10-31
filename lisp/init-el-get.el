@@ -1,6 +1,6 @@
 ;;; lisp/init-el-get.el --- El-get plugin.
 ;;
-;; Copyright (c) 2017 zcodes <zcodes@qq.com>
+;; Copyright (c) 2017-2018 zcodes <zcodes@qq.com>
 ;;
 ;; Author: zcodes <zcodes@qq.com>
 ;; URL: https://github.com/zcodes/emacs-dot-d
@@ -15,7 +15,8 @@
       el-get-install-dir "~/.emacs.d/packages/el-get/"
       el-get-git-install-url "https://github.com/zcodes/el-get.git"
       el-get-install-shallow-clone t
-      el-get-git-shallow-clone t)
+      el-get-git-shallow-clone t
+      el-get-bundle-byte-compile t)
 
 (add-to-list 'load-path el-get-install-dir)
 (unless (require 'el-get nil 'noerror)

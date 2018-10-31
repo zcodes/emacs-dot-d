@@ -1,6 +1,7 @@
-;;; lisp/init-basic.el --- Emacs basic settings and common used plugins.
+;;; lisp/init-basic.el --- Emacs basic settings and common used
+;;; plugins.
 ;;
-;; Copyright (c) 2017 zcodes <zcodes@qq.com>
+;; Copyright (c) 2017-2018 zcodes <zcodes@qq.com>
 ;;
 ;; Author: zcodes <zcodes@qq.com>
 ;; URL: https://github.com/zcodes/emacs-dot-d
@@ -20,8 +21,7 @@
 ;; line numbers.
 (el-get-bundle 'nlinum
   (global-nlinum-mode t))
-(setq nlinum-format "%d ")
-
+(setq nlinum-format " %d ")
 (global-visual-line-mode t)
 
 ;; highlight current line.
@@ -80,14 +80,18 @@
   (flx-ido-mode 1)
   (define-key ido-common-completion-map (kbd "<escape>") 'abort-recursive-edit)
   (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit))
+
 ;; smex
 (el-get-bundle smex)
 (global-set-key (kbd "M-x") 'smex)
 
-;; powerline.
-(el-get-bundle 'powerline
-  (setq powerline-default-separator 'box)
-  (powerline-default-theme))
+;; mode line settings
+;; (el-get-bundle 'powerline)
+;; spaceline based on powerline
+(el-get-bundle 'spaceline
+  (require 'spaceline-config)
+  (setq powerline-default-separator 'zigzag)
+  (spaceline-spacemacs-theme))
 
 ;; ibuffer.
 (el-get-bundle 'ibuffer-vc)
@@ -137,14 +141,14 @@
 ;; dired
 ;; TODO https://github.com/emacsmirror/dired-sort
 ;; TODO https://github.com/Fuco1/dired-hacks
-(el-get-bundle 'dired+
-  (setq-default diredp-hide-details-initially-flag nil
-		dired-dwin-target t)
-  (with-eval-after-load 'dired
-    (require 'dired+)
-    (when (fboundp 'global-dired-hide-details-mode)
-      (global-dired-hide-details-mode 0))
-    (setq dired-recursive-deletes 'top)))
+(el-get-bundle 'dired+)
+(setq-default diredp-hide-details-initially-flag nil
+	      dired-dwin-target t)
+(with-eval-after-load 'dired
+  (require 'dired+)
+  (when (fboundp 'global-dired-hide-details-mode)
+    (global-dired-hide-details-mode 0))
+  (setq dired-recursive-deletes 'top))
 
 ;; speedbar
 (el-get-bundle 'sr-speedbar)
@@ -157,12 +161,14 @@
 
 (el-get-bundle 'emacs-neotree)
 (setq neo-theme 'ascii)
-(evil-define-key 'normal neotree-mode-map (kbd "RET")
-  (neotree-make-executor :file-fn 'neo-open-file :dir-fn 'neo-open-dir))
-(evil-define-key 'normal neotree-mode-map "u" 'neotree-select-up-node)
-(evil-define-key 'normal neotree-mode-map "i" 'neotree-hidden-file-toggle)
-(evil-define-key 'normal neotree-mode-map "c" 'neotree-change-root)
-(evil-define-key 'normal neotree-mode-map "r" 'neotree-refresh)
+(if (fboundp 'evil-define-key)
+    (progn
+      (evil-define-key 'normal neotree-mode-map (kbd "RET")
+        (neotree-make-executor :file-fn 'neo-open-file :dir-fn 'neo-open-dir))
+      (evil-define-key 'normal neotree-mode-map "u" 'neotree-select-up-node)
+      (evil-define-key 'normal neotree-mode-map "i" 'neotree-hidden-file-toggle)
+      (evil-define-key 'normal neotree-mode-map "c" 'neotree-change-root)
+      (evil-define-key 'normal neotree-mode-map "r" 'neotree-refresh)))
 
 (global-set-key (kbd "<f3>") 'sr-speedbar-open)
 (global-set-key (kbd "<f4>") 'sr-speedbar-close)
@@ -182,8 +188,28 @@
   (yas-global-mode +1))
 
 ;; window numbering
-(el-get-bundle 'window-numbering
-  (window-numbering-mode +1))
+;; (el-get-bundle 'window-numbering)
+;; (window-numbering-mode +1)
+;;
+;; winum is an extended and actively maintained version of
+;; window-numbering.
+(el-get-bundle 'winum)
+;; redefine winum keymap
+(setq winum-auto-setup-mode-line nil
+      winum-keymap (let ((map (make-sparse-keymap)))
+                     (define-key map (kbd "C-`") 'winum-select-window-by-number)
+                     (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
+                     (define-key map (kbd "M-1") 'winum-select-window-1)
+                     (define-key map (kbd "M-2") 'winum-select-window-2)
+                     (define-key map (kbd "M-3") 'winum-select-window-3)
+                     (define-key map (kbd "M-4") 'winum-select-window-4)
+                     (define-key map (kbd "M-5") 'winum-select-window-5)
+                     (define-key map (kbd "M-6") 'winum-select-window-6)
+                     (define-key map (kbd "M-7") 'winum-select-window-7)
+                     (define-key map (kbd "M-8") 'winum-select-window-8)
+                     (define-key map (kbd "M-9") 'winum-select-window-9)
+                     map))
+(winum-mode)
 
 ;; helpful colors
 (el-get-bundle 'rainbow-mode
