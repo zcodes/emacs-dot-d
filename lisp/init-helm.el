@@ -15,17 +15,18 @@
 ;;; Code:
 
 
+(el-get-bundle popup)
 (el-get-bundle emacs-async)
-(el-get-bundle helm)
+(el-get-bundle! helm)
 
-(require 'helm)
 (require 'helm-config)
-;; (global-set-key (kbd "M-x") 'helm-M-x)
 
 (if (fboundp 'evil-leader/set-key)
     (evil-leader/set-key
       "h x" 'helm-M-x
       "h b" 'helm-filtered-bookmarks
+      "h m" 'helm-mini
+      "h y" 'helm-show-kill-ring
       "h f" 'helm-find-files))
 (helm-mode 1)
 

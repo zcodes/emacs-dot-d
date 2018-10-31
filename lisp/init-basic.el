@@ -76,7 +76,11 @@
   (setq ido-enable-flex-matching 1
         ido-use-faces nil)
   (ido-mode 1)
-  (ido-everywhere 1)
+  ;; helm conflict with ido-everywhere
+  ;; see:
+  ;;    https://github.com/emacs-helm/helm/issues/1441
+  ;;    https://github.com/emacs-helm/helm/wiki/FAQ#helm-mode-conflict-with-ido-everywhere
+  ;; (ido-everywhere 1)
   (flx-ido-mode 1)
   (define-key ido-common-completion-map (kbd "<escape>") 'abort-recursive-edit)
   (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit))
