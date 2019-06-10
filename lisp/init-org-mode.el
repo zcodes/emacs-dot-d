@@ -57,12 +57,14 @@
      "\<li class=\"org-note\"\>\\1\<span class=\"org-note-label\"\>\\2\</span\>" text)))
 (add-hook 'org-mode-hook
           (lambda ()
+            ;; <s to expand org structure template
+            (require 'org-tempo)
+            ;; disable electric pair mode for org-mode
+            (electric-pair-local-mode -1)
+            ;; bind key <f12> to publish current org file
+            (local-set-key (kbd "<f12>") 'org-publish-current-file)
+            ;; override default publish functions.
             (add-to-list 'org-export-filter-plain-list-functions 'my-html-filter-add-notes-class)))
-
-;; keybinding for org-mode
-(add-hook 'org-mode-hook
-          (lambda ()
-            (local-set-key (kbd "<f12>") 'org-publish-current-file)))
-
+            
 (provide 'init-org-mode)
 ;;; init-org-mode.el ends here.
