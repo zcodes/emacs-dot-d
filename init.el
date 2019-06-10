@@ -42,6 +42,7 @@
 (require 'init-org-mode)
 (require 'init-basic)
 (require 'init-helm)
+(require 'init-vcs)
 
 ;; languages
 (require 'init-php)
