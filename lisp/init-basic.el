@@ -190,6 +190,7 @@
 ;; yasnippet
 (el-get-bundle 'yasnippet
   (yas-global-mode +1))
+(el-get-bundle 'yasnippet-snippets)
 
 ;; window numbering
 ;; (el-get-bundle 'window-numbering)

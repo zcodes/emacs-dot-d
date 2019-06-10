@@ -1,4 +1,5 @@
-#+STARTUP: indent
+#+startup: indent
+#+options: ^:{}
 
 * About
 
@@ -21,9 +22,3 @@ The plugins managed by [[https://github.com/dimitri/el-get][El-Get]], and the pl
    + powerline
    + pangu-spacing
    + org-mode
-
-
-
-
-
-

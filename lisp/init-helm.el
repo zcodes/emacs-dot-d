@@ -18,6 +18,7 @@
 (el-get-bundle popup)
 (el-get-bundle emacs-async)
 (el-get-bundle! helm)
+(el-get-bundle! helm-ls-git)
 
 (require 'helm-config)
 
@@ -27,7 +28,8 @@
       "h b" 'helm-filtered-bookmarks
       "h m" 'helm-mini
       "h y" 'helm-show-kill-ring
-      "h f" 'helm-find-files))
+      "h f" 'helm-find-files
+      "h p" 'helm-browse-project))
 (helm-mode 1)
 
 (provide 'init-helm)
