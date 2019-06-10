@@ -13,7 +13,8 @@
 ;; do not remove this
 ;; (package-initialize)
 
-(setq gc-cons-threshold 104857600
+(setq gc-cons-threshold (* 512 1024 1024)
+      gc-cons-percentage 0.5
       package-enable-at-startup nil)
 
 ;; setup custom-files
@@ -41,6 +42,7 @@
 (require 'init-theme)
 (require 'init-org-mode)
 (require 'init-basic)
+(require 'init-project)
 (require 'init-helm)
 (require 'init-vcs)
 

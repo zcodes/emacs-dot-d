@@ -27,7 +27,8 @@
   "b b" 'ido-switch-buffer
   "b f" 'ibuffer
   "b d" 'dird
-  "f" 'ido-find-file)
+  "f" 'ido-find-file
+  "p" 'projectile-command-map)
 
 (dolist (mode '(emacs-lisp-mode lisp-interaction-mode))
   (evil-leader/set-key-for-mode mode
