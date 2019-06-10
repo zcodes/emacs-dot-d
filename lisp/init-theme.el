@@ -13,7 +13,7 @@
 (el-get-bundle emacs-material-theme)
 
 ;; other awesome themes
-;; (el-get-bundle emacs-doom-themes)
+;; (el-get-bundle doom-themes)
 ;; (el-get-bundle emacs-ample-theme
 ;;   :url "https://github.com/jordonbiondo/ample-theme.git"
 ;;   (add-to-list 'custom-theme-load-path "~/.emacs.d/packages/emacs-ample-theme/"))

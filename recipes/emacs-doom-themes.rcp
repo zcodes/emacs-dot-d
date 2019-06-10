@@ -1,5 +1,0 @@
-(:name emacs-doom-themes
-       :website "https://github.com/hlissner/emacs-doom-themes"
-       :description  "An opinionated pack of modern color-themes"
-       :type github
-       :pkgname "hlissner/emacs-doom-themes")
