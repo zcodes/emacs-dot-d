@@ -19,7 +19,7 @@
 ;; (setq w32-use-visible-system-caret t)
 
 ;; line numbers.
-(el-get-bundle 'nlinum
+(el-get-bundle nlinum
   (global-nlinum-mode t))
 (setq nlinum-format " %d ")
 (global-visual-line-mode t)
@@ -62,7 +62,7 @@
 
 ;; NOTES the spell for `separtor' is should be `separator', error in
 ;; `pangu-spacing.el'
-(el-get-bundle 'pangu-spacing
+(el-get-bundle pangu-spacing
   (global-pangu-spacing-mode 1)
   (dolist (mode '(org-mode-hook markdown-mode-hook))
     (add-hook mode
@@ -71,7 +71,7 @@
                        'pangu-spacing-real-insert-separtor) t)))))
 
 ;; ido and flx (fuzzy matching).
-(el-get-bundle 'flx
+(el-get-bundle flx
   (require 'flx-ido)
   (setq ido-enable-flex-matching 1
         ido-use-faces nil)
@@ -92,13 +92,13 @@
 ;; mode line settings
 ;; (el-get-bundle 'powerline)
 ;; spaceline based on powerline
-(el-get-bundle 'spaceline
+(el-get-bundle spaceline
   (require 'spaceline-config)
   (setq powerline-default-separator 'zigzag)
   (spaceline-spacemacs-theme))
 
 ;; ibuffer.
-(el-get-bundle 'ibuffer-vc)
+(el-get-bundle ibuffer-vc)
 (with-eval-after-load 'ibuffer
   (define-ibuffer-column size-h
     (:name "Size" :inline t)
@@ -145,7 +145,7 @@
 ;; dired
 ;; TODO https://github.com/emacsmirror/dired-sort
 ;; TODO https://github.com/Fuco1/dired-hacks
-(el-get-bundle 'dired+)
+(el-get-bundle dired+)
 (setq-default diredp-hide-details-initially-flag nil
 	      dired-dwin-target t)
 (with-eval-after-load 'dired
@@ -155,7 +155,7 @@
   (setq dired-recursive-deletes 'top))
 
 ;; speedbar
-(el-get-bundle 'sr-speedbar)
+(el-get-bundle sr-speedbar)
 (setq sr-speedbar-skip-other-window-p t
       sr-speedbar-right-side nil
       sr-speedbar-auto-refresh nil
@@ -163,7 +163,7 @@
       speedbar-show-unknown-files t
       speedbar-update-flags nil)
 
-(el-get-bundle 'emacs-neotree)
+(el-get-bundle emacs-neotree)
 (setq neo-theme 'ascii)
 (if (fboundp 'evil-define-key)
     (progn
@@ -179,16 +179,16 @@
 (global-set-key (kbd "<f8>") 'neotree-toggle)
 
 ;; company-mode
-(el-get-bundle 'company-mode)
+(el-get-bundle company-mode)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;; company-flx
-(el-get-bundle 'company-flx)
+(el-get-bundle company-flx)
 (with-eval-after-load 'company
   (company-flx-mode +1))
 
 ;; yasnippet
-(el-get-bundle 'yasnippet
+(el-get-bundle yasnippet
   (yas-global-mode +1))
 
 ;; window numbering
@@ -197,7 +197,7 @@
 ;;
 ;; winum is an extended and actively maintained version of
 ;; window-numbering.
-(el-get-bundle 'winum)
+(el-get-bundle winum)
 ;; redefine winum keymap
 (setq winum-auto-setup-mode-line nil
       winum-keymap (let ((map (make-sparse-keymap)))
@@ -216,9 +216,9 @@
 (winum-mode)
 
 ;; helpful colors
-(el-get-bundle 'rainbow-mode
+(el-get-bundle rainbow-mode
   (rainbow-mode))
-(el-get-bundle 'rainbow-delimiters)
+(el-get-bundle rainbow-delimiters)
 
 (provide 'init-basic)
 ;;; init-basic.el ends here.
