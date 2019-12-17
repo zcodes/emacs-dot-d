@@ -18,7 +18,9 @@
       el-get-git-shallow-clone t
       el-get-bundle-byte-compile t)
 
-(add-to-list 'load-path el-get-install-dir)
+(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
@@ -29,8 +31,6 @@
 ;; custom el-get recipes
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes/")
 
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 ;; sync el-get
 (add-hook 'after-init-hook
           (lambda ()

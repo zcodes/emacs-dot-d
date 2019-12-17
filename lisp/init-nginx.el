@@ -10,7 +10,7 @@
 ;;
 ;;; Code:
 
-(el-get-bundle 'nginx-mode)
+(el-get-bundle nginx-mode)
 
 (provide 'init-nginx)
 ;;; init-nginx.el ends here.

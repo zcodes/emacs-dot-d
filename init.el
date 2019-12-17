@@ -19,20 +19,14 @@
 
 ;; setup custom-files
 (setq custom-file "~/.emacs.d/custom.el")
-(setq custom-file-before "~/.emacs.d/custom.before.el")
-(when (file-exists-p custom-file-before)
-  (load custom-file-before))
-(add-hook 'after-init-hook
-          (lambda ()
-            (when (file-exists-p custom-file)
-              (load custom-file))))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; setup load paths
-(let ((paths '("~/.emacs.d/packages/el-get/"
-	       "~/.emacs.d/lisp/"
-	       "~/.emacs.d/site-lisp/")))
-  (dolist (path paths)
-    (add-to-list 'load-path path)))
+(dolist (path '("~/.emacs.d/packages/el-get/"
+                "~/.emacs.d/lisp/"
+                "~/.emacs.d/site-lisp/"))
+  (add-to-list 'load-path path))
 
 ;; common
 (require 'init-el-get)

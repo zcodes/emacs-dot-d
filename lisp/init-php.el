@@ -10,6 +10,6 @@
 ;;
 ;;; Code:
 
-(el-get-bundle 'php-mode)
+(el-get-bundle php-mode)
 
 (provide 'init-php)

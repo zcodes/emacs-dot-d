@@ -10,8 +10,8 @@
 ;;
 ;;; Code:
 
-(el-get-bundle 'org-mode)
-(el-get-bundle 'htmlize)
+(el-get-bundle org-mode)
+(el-get-bundle htmlize)
 
 ;; disable org-bullets, it's hard to display unicode characters in
 ;; common fonts.
