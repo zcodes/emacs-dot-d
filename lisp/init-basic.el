@@ -90,7 +90,7 @@
 (global-set-key (kbd "M-x") 'smex)
 
 ;; mode line settings
-;; (el-get-bundle 'powerline)
+;; (el-get-bundle powerline)
 ;; spaceline based on powerline
 (el-get-bundle spaceline
   (require 'spaceline-config)
@@ -190,10 +190,10 @@
 ;; yasnippet
 (el-get-bundle yasnippet
   (yas-global-mode +1))
-(el-get-bundle 'yasnippet-snippets)
+(el-get-bundle yasnippet-snippets)
 
 ;; window numbering
-;; (el-get-bundle 'window-numbering)
+;; (el-get-bundle window-numbering)
 ;; (window-numbering-mode +1)
 ;;
 ;; winum is an extended and actively maintained version of

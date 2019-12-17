@@ -15,7 +15,7 @@
 
 ;; disable org-bullets, it's hard to display unicode characters in
 ;; common fonts.
-;; (el-get-bundle 'org-bullets
+;; (el-get-bundle org-bullets
 ;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (setq org-log-done t
