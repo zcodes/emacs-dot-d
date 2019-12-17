@@ -1,6 +1,6 @@
 ;;; init-evil.el --- Evil plugin configure
 ;;
-;; Copyright (c) 2017-2018 zcodes <zcodes@qq.com>
+;; Copyright (c) 2017-2019 zcodes <zcodes@qq.com>
 ;;
 ;; Author: zcodes <zcodes@qq.com>
 ;; URL: https://github.com/zcodes/emacs-dot-d
@@ -27,7 +27,7 @@
 (evil-leader/set-key
   "b b" 'ido-switch-buffer
   "b f" 'ibuffer
-  "b d" 'dird
+  "b d" 'dired
   "f" 'ido-find-file
   "p" 'projectile-command-map)
 

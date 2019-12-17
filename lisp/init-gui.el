@@ -1,6 +1,6 @@
 ;;; lisp/init-gui.el --- Emacs gui features.
 ;;
-;; Copyright (c) 2017-2018 zcodes <zcodes@qq.com>
+;; Copyright (c) 2017-2019 zcodes <zcodes@qq.com>
 ;;
 ;; Author: zcodes <zcodes@qq.com>
 ;; URL: https://github.com/zcodes/emacs-dot-d
