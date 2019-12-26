@@ -10,14 +10,13 @@
 ;;
 ;;; Code:
 
-(el-get-bundle! 'projectile)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
-(projectile-mode +1)
-(setq projectile-enable-caching t)
-(setq projectile-git-command "git ls-files -zco --exclude-standard")
-;; (setq projectile-indexing-method 'hybrid)
+(el-get-bundle! projectile
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (setq projectile-enable-caching t)
+  (setq projectile-git-command "git ls-files -zco --exclude-standard")
+  ;; (setq projectile-indexing-method 'hybrid)
+  (projectile-mode +1))
 
 (provide 'init-project)
 ;;; init-project.el ends here.
