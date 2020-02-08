@@ -17,8 +17,8 @@
 
 (el-get-bundle popup)
 (el-get-bundle emacs-async)
-(el-get-bundle! helm)
-(el-get-bundle! helm-ls-git)
+(el-get-bundle helm)
+(el-get-bundle helm-ls-git)
 
 (require 'helm-config)
 

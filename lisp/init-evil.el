@@ -10,7 +10,6 @@
 ;;
 ;;; Code:
 
-(el-get-bundle undo-tree)
 (el-get-bundle evil)
 (el-get-bundle evil-leader)
 (el-get-bundle evil-org-mode)

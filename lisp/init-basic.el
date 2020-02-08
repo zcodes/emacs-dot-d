@@ -19,18 +19,19 @@
 ;; (setq w32-use-visible-system-caret t)
 
 ;; line numbers.
-(el-get-bundle nlinum
-  (global-nlinum-mode t))
-(setq nlinum-format " %d ")
-(global-visual-line-mode t)
+(el-get-bundle nlinum)
+;; (global-nlinum-mode t)
+
+;; (setq nlinum-format " %d ")
+;; (global-visual-line-mode t)
 
 ;; highlight current line.
 (when window-system
   (global-hl-line-mode t))
 
 ;; parenthesis
-(show-paren-mode -1)
-(electric-pair-mode 1)
+(show-paren-mode nil)
+(electric-pair-mode t)
 
 ;; no blink cursor.
 (blink-cursor-mode 0)
@@ -40,7 +41,7 @@
       mouse-wheel-scroll-amount '(2 ((shift) . 2))
       mouse-wheel-progressive-speed nil
       mouse-wheel-follow-mouse 1
-      minibuffer-prompt-properties '(readonly t point-entered minibuffer-avoid-prompt face minibuffer-prompt)
+      ;; minibuffer-prompt-properties '(readonly t point-entered minibuffer-avoid-prompt face minibuffer-prompt)
       make-backup-files nil
       vc-make-backup-files nil)
 
@@ -62,28 +63,28 @@
 
 ;; NOTES the spell for `separtor' is should be `separator', error in
 ;; `pangu-spacing.el'
-(el-get-bundle pangu-spacing
-  (global-pangu-spacing-mode 1)
-  (dolist (mode '(org-mode-hook markdown-mode-hook))
-    (add-hook mode
-              '(lambda ()
-                 (set (make-local-variable
-                       'pangu-spacing-real-insert-separtor) t)))))
+(el-get-bundle pangu-spacing)
+(global-pangu-spacing-mode 1)
+(dolist (mode '(org-mode-hook markdown-mode-hook))
+  (add-hook mode
+            '(lambda ()
+               (set (make-local-variable
+                     'pangu-spacing-real-insert-separtor) t))))
 
 ;; ido and flx (fuzzy matching).
-(el-get-bundle flx
-  (require 'flx-ido)
-  (setq ido-enable-flex-matching 1
-        ido-use-faces nil)
-  (ido-mode 1)
-  ;; helm conflict with ido-everywhere
-  ;; see:
-  ;;    https://github.com/emacs-helm/helm/issues/1441
-  ;;    https://github.com/emacs-helm/helm/wiki/FAQ#helm-mode-conflict-with-ido-everywhere
-  ;; (ido-everywhere 1)
-  (flx-ido-mode 1)
-  (define-key ido-common-completion-map (kbd "<escape>") 'abort-recursive-edit)
-  (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit))
+(el-get-bundle flx)
+(require 'flx-ido)
+(setq ido-enable-flex-matching 1
+      ido-use-faces nil)
+(ido-mode 1)
+;; helm conflict with ido-everywhere
+;; see:
+;;    https://github.com/emacs-helm/helm/issues/1441
+;;    https://github.com/emacs-helm/helm/wiki/FAQ#helm-mode-conflict-with-ido-everywhere
+;; (ido-everywhere 1)
+(flx-ido-mode 1)
+(define-key ido-common-completion-map (kbd "<escape>") 'abort-recursive-edit)
+(define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
 
 ;; smex
 (el-get-bundle smex)
@@ -92,10 +93,10 @@
 ;; mode line settings
 ;; (el-get-bundle powerline)
 ;; spaceline based on powerline
-(el-get-bundle spaceline
-  (require 'spaceline-config)
-  (setq powerline-default-separator 'zigzag)
-  (spaceline-spacemacs-theme))
+(el-get-bundle spaceline)
+(require 'spaceline-config)
+(setq powerline-default-separator 'zigzag)
+(spaceline-spacemacs-theme)
 
 ;; ibuffer.
 (el-get-bundle ibuffer-vc)
@@ -188,9 +189,9 @@
   (company-flx-mode +1))
 
 ;; yasnippet
-(el-get-bundle yasnippet
-  (yas-global-mode +1))
+(el-get-bundle yasnippet)
 (el-get-bundle yasnippet-snippets)
+;; (yas-global-mode t)
 
 ;; window numbering
 ;; (el-get-bundle window-numbering)
@@ -217,9 +218,9 @@
 (winum-mode)
 
 ;; helpful colors
-(el-get-bundle rainbow-mode
-  (rainbow-mode))
+(el-get-bundle rainbow-mode)
 (el-get-bundle rainbow-delimiters)
+(rainbow-mode)
 
 (provide 'init-basic)
 ;;; init-basic.el ends here.
