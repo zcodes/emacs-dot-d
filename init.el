@@ -1,6 +1,6 @@
 ;;; init.el --- Entry file of Emacs configuration.
 ;;
-;; Copyright (c) 2017-2019 zcodes <zcodes@qq.com>
+;; Copyright (c) 2017-2020 zcodes <zcodes@qq.com>
 ;;
 ;; Author: zcodes <zcodes@qq.com>
 ;; URL: https://github.com/zcodes/emacs-dot-d

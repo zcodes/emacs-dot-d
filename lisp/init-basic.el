@@ -1,7 +1,7 @@
 ;;; lisp/init-basic.el --- Emacs basic settings and common used
 ;;; plugins.
 ;;
-;; Copyright (c) 2017-2019 zcodes <zcodes@qq.com>
+;; Copyright (c) 2017-2020 zcodes <zcodes@qq.com>
 ;;
 ;; Author: zcodes <zcodes@qq.com>
 ;; URL: https://github.com/zcodes/emacs-dot-d
@@ -192,6 +192,7 @@
 (el-get-bundle yasnippet)
 (el-get-bundle yasnippet-snippets)
 ;; (yas-global-mode t)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;; window numbering
 ;; (el-get-bundle window-numbering)
