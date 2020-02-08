@@ -13,20 +13,27 @@
 ;; do not remove this
 ;; (package-initialize)
 
-(setq gc-cons-threshold (* 512 1024 1024)
-      gc-cons-percentage 0.5
+(setq gc-cons-threshold most-positive-fixnum
+      gc-cons-percentage 0.6
       package-enable-at-startup nil)
 
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* 16 1024 1024)
+                  gc-cons-percentage 0.1)))
+
+(setq user-emacs-directory (file-name-directory load-file-name))
+
 ;; setup custom-files
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
   (load custom-file nil 'nomessage))
 
 ;; setup load paths
-(dolist (path '("~/.emacs.d/packages/el-get/"
-                "~/.emacs.d/lisp/"
-                "~/.emacs.d/site-lisp/"))
-  (add-to-list 'load-path path))
+(dolist (path '("packages/el-get/"
+                "lisp/"
+                "site-lisp/"))
+  (add-to-list 'load-path (concat user-emacs-directory path)))
 
 ;; common
 (require 'init-core)
