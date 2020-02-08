@@ -45,6 +45,7 @@
 (require 'init-elisp)
 (require 'init-lisp)
 (require 'init-nginx)
+(require 'init-cmake)
 
 ;;
 ;;

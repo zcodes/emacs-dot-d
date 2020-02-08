@@ -31,8 +31,8 @@
 
 ;; use custom window size when emacs start up.
 (when window-system
-  (add-to-list 'default-frame-alist '(width . 120))
-  (add-to-list 'default-frame-alist '(height . 30)))
+  (add-to-list 'default-frame-alist '(width . 80))
+  (add-to-list 'default-frame-alist '(height . 20)))
 
 
 (provide 'init-gui)
