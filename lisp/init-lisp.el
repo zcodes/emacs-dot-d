@@ -11,36 +11,32 @@
 ;;; Code:
 
 (el-get-bundle dash)
-(el-get-bundle slime.git
-  :url "https://github.com/slime/slime.git"
-  (require 'slime-autoloads)
+(el-get-bundle slime/slime :features slime-autoloads)
 
-  ;; set this in custom.el
-  ;; (setq inferior-lisp-program "path-to-lisp")
+;; set this in custom.el
+;; (setq inferior-lisp-program "path-to-lisp")
 
-  ;; enable slime contribs
-  (dolist (contrib '(slime-fancy
-                     slime-indentation
-                     slime-sbcl-exts
-                     inferior-slime
-                     slime-scratch))
-    (add-to-list 'slime-contribs contrib)))
+;; enable slime contribs
+(dolist (contrib '(slime-fancy
+                   slime-indentation
+                   slime-sbcl-exts
+                   inferior-slime
+                   slime-scratch))
+  (add-to-list 'slime-contribs contrib))
 
-(el-get-bundle parinfer-mode
-  :url "https://github.com/DogLooksGood/parinfer-mode.git"
-  (eval-when-compile (require 'parinfer))
-  (add-hook 'parinfer-mode-hook
-            (lambda ()
-              (setq parinfer-extensions
-                    '( ;;defaults
-                       ;; pretty-parens
-                       ;; smart-yank
-                       ;; smart-tab
-                       ;; paredit
-                       ;; lispy
-                       evil))))
-  (add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
-  (add-hook 'lisp-mode-hook #'parinfer-mode))
+(el-get-bundle doglooksgood/parinfer-mode :features parinfer)
+(add-hook 'parinfer-mode-hook
+          (lambda ()
+            (setq parinfer-extensions
+                  '( ;;defaults
+                    ;; pretty-parens
+                    ;; smart-yank
+                    ;; smart-tab
+                    ;; paredit
+                    ;; lispy
+                    evil))))
+(add-hook 'emacs-lisp-mode-hook #'parinfer-mode)
+(add-hook 'lisp-mode-hook #'parinfer-mode)
 
 (add-hook 'lisp-mode-hook
           (lambda ()

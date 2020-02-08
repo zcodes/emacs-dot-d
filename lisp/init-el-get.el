@@ -16,7 +16,8 @@
       el-get-git-install-url "https://github.com/zcodes/el-get.git"
       el-get-install-shallow-clone t
       el-get-git-shallow-clone t
-      el-get-bundle-byte-compile t)
+      el-get-bundle-byte-compile t
+      el-get-is-lazy nil)
 
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
@@ -32,10 +33,10 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes/")
 
 ;; sync el-get
-(add-hook 'after-init-hook
-          (lambda ()
-            (el-get 'sync)
-            (package-initialize)))
+;; (add-hook 'after-init-hook
+;;           (lambda ()
+;;             (el-get 'sync)
+;;             (package-initialize)))
 
 (provide 'init-el-get)
 ;;; init-el-get.el ends here.
