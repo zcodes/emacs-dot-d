@@ -11,9 +11,7 @@
 ;;; Code:
 
 (el-get-bundle dash)
-(el-get-bundle slime.git
-  :url "https://github.com/slime/slime.git"
-  (require 'slime-autoloads))
+(el-get-bundle slime/slime :features slime-autoloads)
 
 ;; set this in custom.el
 ;; (setq inferior-lisp-program "path-to-lisp")
@@ -26,9 +24,7 @@
                    slime-scratch))
   (add-to-list 'slime-contribs contrib))
 
-(el-get-bundle parinfer-mode
-  :url "https://github.com/DogLooksGood/parinfer-mode.git"
-  (eval-when-compile (require 'parinfer)))
+(el-get-bundle doglooksgood/parinfer-mode :features parinfer)
 (add-hook 'parinfer-mode-hook
           (lambda ()
             (setq parinfer-extensions
