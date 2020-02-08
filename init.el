@@ -20,7 +20,7 @@
 ;; setup custom-files
 (setq custom-file "~/.emacs.d/custom.el")
 (when (file-exists-p custom-file)
-  (load custom-file))
+  (load custom-file nil 'nomessage))
 
 ;; setup load paths
 (dolist (path '("~/.emacs.d/packages/el-get/"
@@ -29,6 +29,7 @@
   (add-to-list 'load-path path))
 
 ;; common
+(require 'init-core)
 (require 'init-el-get)
 (require 'init-evil)
 (require 'init-gui)
