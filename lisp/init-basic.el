@@ -20,10 +20,10 @@
 
 ;; line numbers.
 (el-get-bundle nlinum)
-;; (global-nlinum-mode t)
+(global-nlinum-mode t)
 
-;; (setq nlinum-format " %d ")
-;; (global-visual-line-mode t)
+(setq nlinum-format " %d ")
+(global-visual-line-mode t)
 
 ;; highlight current line.
 (when window-system
