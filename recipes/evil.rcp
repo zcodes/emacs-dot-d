@@ -5,7 +5,7 @@
        :pkgname "zcodes/evil"
        :features evil
        :depends (undo-tree goto-chg)
-       :build (("make" "info" "all"))
-       :build/berkeley-unix (("gmake" "info" "all"))
-       :build/darwin `(("make" ,(format "EMACS=%s" el-get-emacs) "info" "all"))
+       :build (("make" "all"))
+       :build/berkeley-unix (("gmake" "all"))
+       :build/darwin `(("make" ,(format "EMACS=%s" el-get-emacs) "all"))
        :info "doc")

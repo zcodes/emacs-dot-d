@@ -11,8 +11,8 @@
 ;;; Code:
 
 ;; custom el-get paths
-(setq el-get-dir "~/.emacs.d/packages/"
-      el-get-install-dir "~/.emacs.d/packages/el-get/"
+(setq el-get-dir (expand-file-name "~/.emacs.d/packages/")
+      el-get-install-dir (expand-file-name "~/.emacs.d/packages/el-get/")
       el-get-git-install-url "https://github.com/zcodes/el-get.git"
       el-get-install-shallow-clone t
       el-get-git-shallow-clone t
