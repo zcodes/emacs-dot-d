@@ -33,10 +33,10 @@
 (add-to-list 'el-get-recipe-path "~/.emacs.d/recipes/")
 
 ;; sync el-get
-;; (add-hook 'after-init-hook
-;;           (lambda ()
-;;             (el-get 'sync)
-;;             (package-initialize)))
+(add-hook 'after-init-hook
+          (lambda ()
+            (el-get 'sync)
+            (package-initialize)))
 
 (provide 'init-el-get)
 ;;; init-el-get.el ends here.
