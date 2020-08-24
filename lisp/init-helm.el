@@ -22,15 +22,6 @@
 
 (require 'helm-config)
 
-(if (fboundp 'evil-leader/set-key)
-    (evil-leader/set-key
-      "h x" 'helm-M-x
-      "h b" 'helm-filtered-bookmarks
-      "h m" 'helm-mini
-      "h y" 'helm-show-kill-ring
-      "h f" 'helm-find-files
-      "h p" 'helm-browse-project))
 (helm-mode 1)
-
 (provide 'init-helm)
 ;;; init-helm.el ends here.

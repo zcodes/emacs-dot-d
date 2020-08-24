@@ -55,6 +55,9 @@
 (require 'init-nginx)
 (require 'init-cmake)
 
+;; at last, load customized keys
+(require 'init-keys)
+
 ;;
 ;;
 ;;; init.el ends here.

@@ -71,24 +71,25 @@
                (set (make-local-variable
                      'pangu-spacing-real-insert-separtor) t))))
 
+;; use helm instead of flx, smex and ido
 ;; ido and flx (fuzzy matching).
-(el-get-bundle flx)
-(require 'flx-ido)
-(setq ido-enable-flex-matching 1
-      ido-use-faces nil)
-(ido-mode 1)
+;; (el-get-bundle flx)
+;; (require 'flx-ido)
+;; (setq ido-enable-flex-matching 1
+;;       ido-use-faces nil)
+;; (ido-mode 1)
 ;; helm conflict with ido-everywhere
 ;; see:
 ;;    https://github.com/emacs-helm/helm/issues/1441
 ;;    https://github.com/emacs-helm/helm/wiki/FAQ#helm-mode-conflict-with-ido-everywhere
 ;; (ido-everywhere 1)
-(flx-ido-mode 1)
-(define-key ido-common-completion-map (kbd "<escape>") 'abort-recursive-edit)
-(define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
-
+;; (flx-ido-mode 1)
+;; (define-key ido-common-completion-map (kbd "<escape>") 'abort-recursive-edit)
+;; (define-key minibuffer-local-map (kbd "<escape>") 'abort-recursive-edit)
+;;
 ;; smex
-(el-get-bundle smex)
-(global-set-key (kbd "M-x") 'smex)
+;; (el-get-bundle smex)
+;; (global-set-key (kbd "M-x") 'smex)
 
 ;; mode line settings
 ;; (el-get-bundle powerline)
@@ -109,14 +110,7 @@
      (t (format "%8d" (buffer-size))))))
 
 (with-eval-after-load 'ibuffer
-  (define-key ibuffer-mode-map (kbd "j") 'ibuffer-forward-line)
-  (define-key ibuffer-mode-map (kbd "k") 'ibuffer-backward-line)
-  (define-key ibuffer-mode-map (kbd "C-j") 'ibuffer-jump-to-buffer))
-
-(with-eval-after-load 'ibuffer
   (require 'ibuffer-vc))
-
-(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (defun zcodes:ibuffer-set-up-preferred-filters ()
   (ibuffer-vc-set-filter-groups-by-vc-root)
@@ -166,18 +160,6 @@
 
 (el-get-bundle emacs-neotree)
 (setq neo-theme 'ascii)
-(if (fboundp 'evil-define-key)
-    (progn
-      (evil-define-key 'normal neotree-mode-map (kbd "RET")
-        (neotree-make-executor :file-fn 'neo-open-file :dir-fn 'neo-open-dir))
-      (evil-define-key 'normal neotree-mode-map "u" 'neotree-select-up-node)
-      (evil-define-key 'normal neotree-mode-map "i" 'neotree-hidden-file-toggle)
-      (evil-define-key 'normal neotree-mode-map "c" 'neotree-change-root)
-      (evil-define-key 'normal neotree-mode-map "r" 'neotree-refresh)))
-
-(global-set-key (kbd "<f3>") 'sr-speedbar-open)
-(global-set-key (kbd "<f4>") 'sr-speedbar-close)
-(global-set-key (kbd "<f8>") 'neotree-toggle)
 
 ;; company-mode
 (el-get-bundle company-mode)
@@ -202,20 +184,7 @@
 ;; window-numbering.
 (el-get-bundle winum)
 ;; redefine winum keymap
-(setq winum-auto-setup-mode-line nil
-      winum-keymap (let ((map (make-sparse-keymap)))
-                     (define-key map (kbd "C-`") 'winum-select-window-by-number)
-                     (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
-                     (define-key map (kbd "M-1") 'winum-select-window-1)
-                     (define-key map (kbd "M-2") 'winum-select-window-2)
-                     (define-key map (kbd "M-3") 'winum-select-window-3)
-                     (define-key map (kbd "M-4") 'winum-select-window-4)
-                     (define-key map (kbd "M-5") 'winum-select-window-5)
-                     (define-key map (kbd "M-6") 'winum-select-window-6)
-                     (define-key map (kbd "M-7") 'winum-select-window-7)
-                     (define-key map (kbd "M-8") 'winum-select-window-8)
-                     (define-key map (kbd "M-9") 'winum-select-window-9)
-                     map))
+(setq winum-auto-setup-mode-line nil)
 (winum-mode)
 
 ;; helpful colors

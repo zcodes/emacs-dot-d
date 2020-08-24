@@ -26,11 +26,6 @@
       org-tags-column 80
       org-html-doctype "html5")
 
-;; 设置全局快捷键
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cc" 'org-capture)
-(global-set-key "\C-cb" 'org-iswitchb)
 
 (defun zcodes:org-file-path (file)
   "concat FILE with `org-directory'"
