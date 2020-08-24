@@ -150,7 +150,8 @@
   (setq dired-recursive-deletes 'top))
 
 ;; speedbar
-(el-get-bundle sr-speedbar)
+(el-get-bundle sr-speedbar
+  (require 'sr-speedbar))
 (setq sr-speedbar-skip-other-window-p t
       sr-speedbar-right-side nil
       sr-speedbar-auto-refresh nil
@@ -158,8 +159,14 @@
       speedbar-show-unknown-files t
       speedbar-update-flags nil)
 
-(el-get-bundle emacs-neotree)
-(setq neo-theme 'ascii)
+(defun sr-speedbar-focus ()
+  (interactive)
+  (if (sr-speedbar-exist-p)
+      (sr-speedbar-select-window)
+    (sr-speedbar-open)))
+
+;; (el-get-bundle emacs-neotree)
+;; (setq neo-theme 'ascii)
 
 ;; company-mode
 (el-get-bundle company-mode)
@@ -183,8 +190,22 @@
 ;; winum is an extended and actively maintained version of
 ;; window-numbering.
 (el-get-bundle winum)
-;; redefine winum keymap
 (setq winum-auto-setup-mode-line nil)
+;; redefine winum keymap
+(setq winum-keymap
+      (let ((map (make-sparse-keymap)))
+        (define-key map (kbd "C-`") 'winum-select-window-by-number)
+        (define-key map (kbd "M-0") 'winum-select-window-0-or-10)
+        (define-key map (kbd "M-1") 'winum-select-window-1)
+        (define-key map (kbd "M-2") 'winum-select-window-2)
+        (define-key map (kbd "M-3") 'winum-select-window-3)
+        (define-key map (kbd "M-4") 'winum-select-window-4)
+        (define-key map (kbd "M-5") 'winum-select-window-5)
+        (define-key map (kbd "M-6") 'winum-select-window-6)
+        (define-key map (kbd "M-7") 'winum-select-window-7)
+        (define-key map (kbd "M-8") 'winum-select-window-8)
+        (define-key map (kbd "M-9") 'winum-select-window-9)
+        map))
 (winum-mode)
 
 ;; helpful colors

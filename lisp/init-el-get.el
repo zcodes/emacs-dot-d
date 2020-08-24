@@ -14,6 +14,7 @@
 (setq el-get-dir (expand-file-name "~/.emacs.d/packages/")
       el-get-install-dir (expand-file-name "~/.emacs.d/packages/el-get/")
       el-get-git-install-url "https://github.com/zcodes/el-get.git"
+      el-get-emacswiki-base-url "https://www.emacswiki.org/emacs/download/"
       el-get-install-shallow-clone t
       el-get-git-shallow-clone t
       el-get-bundle-byte-compile t
