@@ -181,6 +181,8 @@
 (el-get-bundle yasnippet)
 (el-get-bundle yasnippet-snippets)
 ;; (yas-global-mode t)
+;; use yas minor mode
+(yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;; window numbering
