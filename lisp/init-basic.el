@@ -150,8 +150,7 @@
   (setq dired-recursive-deletes 'top))
 
 ;; speedbar
-(el-get-bundle sr-speedbar
-  (require 'sr-speedbar))
+(el-get-bundle sr-speedbar)
 (setq sr-speedbar-skip-other-window-p t
       sr-speedbar-right-side nil
       sr-speedbar-auto-refresh nil
@@ -161,6 +160,8 @@
 
 (defun sr-speedbar-focus ()
   (interactive)
+  (unless (functionp 'sr-speedbar-exists-p)
+    (require 'sr-speedbar))
   (if (sr-speedbar-exist-p)
       (sr-speedbar-select-window)
     (sr-speedbar-open)))
