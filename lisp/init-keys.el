@@ -20,6 +20,7 @@
 (evil-leader/set-key
   "f" 'helm-find-files
   "p" 'helm-browse-project
+  "s" 'server-edit
   "b b" 'helm-buffers-list
   "b f" 'ibuffer
   "b d" 'dired

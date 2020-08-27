@@ -58,6 +58,10 @@
 ;; at last, load customized keys
 (require 'init-keys)
 
+;; start emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 ;;
 ;;
 ;;; init.el ends here.
