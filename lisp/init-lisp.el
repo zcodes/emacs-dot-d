@@ -11,18 +11,16 @@
 ;;; Code:
 
 (el-get-bundle dash)
-(el-get-bundle slime/slime :features slime-autoloads)
-
-;; set this in custom.el
-;; (setq inferior-lisp-program "path-to-lisp")
-
-;; enable slime contribs
-(dolist (contrib '(slime-fancy
-                   slime-indentation
-                   slime-sbcl-exts
-                   inferior-slime
-                   slime-scratch))
-  (add-to-list 'slime-contribs contrib))
+(el-get-bundle slime/slime :features slime-autoloads
+    ;; set this in custom.el
+    ;; (setq inferior-lisp-program "path-to-lisp")
+    ;; enable slime contribs
+    (dolist (contrib '(slime-fancy)
+                    slime-indentation
+                    slime-sbcl-exts
+                    inferior-slime
+                    slime-scratch)
+        (add-to-list 'slime-contribs contrib)))
 
 (el-get-bundle doglooksgood/parinfer-mode :features parinfer)
 (add-hook 'parinfer-mode-hook

@@ -18,7 +18,7 @@
       el-get-install-shallow-clone t
       el-get-git-shallow-clone t
       el-get-bundle-byte-compile t
-      el-get-is-lazy nil)
+      el-get-is-lazy t)
 
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
