@@ -19,7 +19,7 @@
       el-get-git-shallow-clone t
       el-get-bundle-byte-compile t
       el-get-is-lazy t
-      el-get-verbose t 
+      el-get-verbose nil 
       el-get-bundle-sync t
       el-get-auto-update-cached-recipes nil)
 
