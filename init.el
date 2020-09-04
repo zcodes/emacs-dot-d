@@ -41,8 +41,8 @@
 (if zcodes-enable-benchmark
     (progn
       (require 'benchmark-init)
-      (require 'benchmark-init-modes))
-    (benchmark-init/active))
+      (require 'benchmark-init-modes)
+      (benchmark-init/active)))
 
 ;; common
 (require 'init-core)
