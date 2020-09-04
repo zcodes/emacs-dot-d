@@ -1,0 +1,8 @@
+#+title: site-lisp
+#+startup: indent
+
+* site-lisp
+** benchmark-init
++ the original repo of benchmark-init is hosted on [[https://github.com/dholm/benchmark-init-el][github]]
++ as we should measure stuff as many as possible, it doesn't managed
+  by el-get

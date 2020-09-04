@@ -24,6 +24,9 @@
 
 (setq user-emacs-directory (file-name-directory load-file-name))
 
+(defvar zcodes-enable-benchmark nil
+  "Enable benchmark at start.")
+
 ;; setup custom-files
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (when (file-exists-p custom-file)
@@ -34,6 +37,12 @@
                 "lisp/"
                 "site-lisp/"))
   (add-to-list 'load-path (concat user-emacs-directory path)))
+
+(if zcodes-enable-benchmark
+    (progn
+      (require 'benchmark-init)
+      (require 'benchmark-init-modes))
+    (benchmark-init/active))
 
 ;; common
 (require 'init-core)
