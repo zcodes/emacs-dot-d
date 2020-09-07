@@ -42,7 +42,7 @@
     (progn
       (require 'benchmark-init)
       (require 'benchmark-init-modes)
-      (benchmark-init/active)))
+      (benchmark-init/activate)))
 
 ;; common
 (require 'init-core)
