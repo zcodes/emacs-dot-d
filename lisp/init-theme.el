@@ -13,7 +13,11 @@
 (el-get-bundle emacs-material-theme)
 
 ;; other awesome themes
-;; (el-get-bundle doom-themes)
+(el-get-bundle doom-themes)
+(require 'doom-themes)
+(setq doom-themes-enable-bold nil
+      doom-themes-enable-italic nil)
+(doom-themes-org-config)
 ;; (el-get-bundle emacs-ample-theme
 ;;   :url "https://github.com/jordonbiondo/ample-theme.git"
 ;;   (add-to-list 'custom-theme-load-path "~/.emacs.d/packages/emacs-ample-theme/"))

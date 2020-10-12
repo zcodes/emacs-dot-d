@@ -15,6 +15,7 @@
 (el-get-bundle evil-org-mode)
 (el-get-bundle github:emacs-evil/evil-collection)
 
+(setq evil-want-C-i-jump nil)
 (evil-mode 1)
 (global-evil-leader-mode)
 
