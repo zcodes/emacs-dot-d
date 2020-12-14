@@ -33,13 +33,38 @@
       (concat org-directory file)
     (concat (expand-file-name "~") file)))
 
+(setq org-publish-project-alist '())
+(defun zc:add-org-project (name src dest)
+  (let ((project-org (concat "orgs-" name))
+        (project-static (concat "static-" name)))
+    (add-to-list 'org-publish-project-alist `(,project-org
+                                              :base-directory ,src
+                                              :base-extension "org"
+                                              :recursive t
+                                              :publishing-directory ,dest
+                                              :publishing-function org-html-publish-to-html
+                                              :language "zh-CN"
+                                              :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/static/css/normalize.css\">
+<link rel=\"stylesheet\" type=\"text/css\"   href=\"/static/css/style.css\">"
+                                              :with-special-strings nil
+                                              :with-date t
+                                              :with-timestamps nil
+                                              :with-sub-superscript "{}") t)
+    (add-to-list 'org-publish-project-alist `(,project-static
+                                              :base-directory ,(concat src "/static")
+                                              :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+                                              :publishing-directory ,(concat dest "/static")
+                                              :recursive t
+                                              :publishing-function org-publish-attachment) t)
+    (add-to-list 'org-publish-project-alist `(,name :components (,project-org ,project-static)) t)))
+
 (with-eval-after-load "custom.el"
   (setq org-default-notes-file (zcodes:org-file-path "/notes.org")
         org-capture-templates `(("t" "todo" entry (file ,(zcodes:org-file-path "todo.org"))
                                  "* TODO %?\n%U\n" :clock-resume t)
                                 ("n" "note" entry (file "") "* %? :NOTE:\n%U\n" :clock-resume t)
                                 ("j" "journal" entry (file+olp+datetree ,(zcodes:org-file-path "/journal.org"))
-                                 "* %?\nEntered on %<[%H:%M:%S]>\n %i\n" :clock-resume t))))
+                                 "* %<[%H:%M:%S]> %?\n %i\n" :clock-resume t))))
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "|" "DONE(d)" "CANCELED(c)")))
@@ -48,16 +73,20 @@
   "Add .org-note class to exported log note."
   (when (org-export-derived-backend-p backend 'html)
     (replace-regexp-in-string
-     "\<li\>\\(\<p\>\n\\)?\\(Note taken on.*\</span\>\</span\>\\) \<br\>\\(.*\\)"
+     "\<li\>\\(\<p\>\n\\)?\\(Note\\(:\\| taken on\\).*\</span\>\</span\>\\) \<br\>\\(.*\\)"
      "\<li class=\"org-note\"\>\\1\<span class=\"org-note-label\"\>\\2\</span\>" text)))
+
 (add-hook 'org-mode-hook
           (lambda ()
             ;; <s to expand org structure template
+            (require 'ox)
             (require 'org-tempo)
             ;; disable electric pair mode for org-mode
             (electric-pair-local-mode -1)
             ;; bind key <f12> to publish current org file
             (local-set-key (kbd "<f12>") 'org-publish-current-file)
+            (setcdr (assoc "Created" org-export-dictionary) '(("zh-CN" :default "创建于")))
+            (setcdr (assoc 'note org-log-note-headings) "Note: %t")
             ;; override default publish functions.
             (add-to-list 'org-export-filter-plain-list-functions 'my-html-filter-add-notes-class)))
             
