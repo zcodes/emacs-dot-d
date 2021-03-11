@@ -26,6 +26,7 @@
       org-tags-column 80
       org-html-doctype "html5")
 
+(setq org-emphasis-regexp-components '("-[:space:]('\"{" "-[:space:].:!?;'\"，。：！？；‘’“”)}\\[" "[:space:]，。：！？；‘’’“””" "." 1))
 
 (defun zcodes:org-file-path (file)
   "concat FILE with `org-directory'"
@@ -35,8 +36,7 @@
 
 (setq org-publish-project-alist '())
 (defun zc:add-org-project (name src dest)
-  (let ((project-org (concat "orgs-" name))
-        (project-static (concat "static-" name)))
+  (let ((project-org (concat "orgs-" name)))
     (add-to-list 'org-publish-project-alist `(,project-org
                                               :base-directory ,src
                                               :base-extension "org"
@@ -45,18 +45,11 @@
                                               :publishing-function org-html-publish-to-html
                                               :language "zh-CN"
                                               :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/static/css/normalize.css\">
-<link rel=\"stylesheet\" type=\"text/css\"   href=\"/static/css/style.css\">"
+<link rel=\"stylesheet\" type=\"text/css\" href=\"/static/css/style.css\">"
                                               :with-special-strings nil
                                               :with-date t
                                               :with-timestamps nil
-                                              :with-sub-superscript "{}") t)
-    (add-to-list 'org-publish-project-alist `(,project-static
-                                              :base-directory ,(concat src "/static")
-                                              :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-                                              :publishing-directory ,(concat dest "/static")
-                                              :recursive t
-                                              :publishing-function org-publish-attachment) t)
-    (add-to-list 'org-publish-project-alist `(,name :components (,project-org ,project-static)) t)))
+                                              :with-sub-superscript "{}") t)))
 
 (with-eval-after-load "custom.el"
   (setq org-default-notes-file (zcodes:org-file-path "/notes.org")

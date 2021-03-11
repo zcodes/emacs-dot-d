@@ -18,6 +18,15 @@
 (setq doom-themes-enable-bold nil
       doom-themes-enable-italic nil)
 (doom-themes-org-config)
+
+;; note: doom-theme also has a solarized theme
+;; solarized-theme
+(el-get-bundle 'elpa:solarized-theme)
+(require 'solarized-theme)
+(setq solarized-use-variable-pitch nil
+      solarized-use-less-bold t
+      solarized-scale-org-headlines nil)
+
 ;; (el-get-bundle emacs-ample-theme
 ;;   :url "https://github.com/jordonbiondo/ample-theme.git"
 ;;   (add-to-list 'custom-theme-load-path "~/.emacs.d/packages/emacs-ample-theme/"))
